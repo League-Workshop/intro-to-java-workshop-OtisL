@@ -12,7 +12,7 @@ public class PentagonCrazy {
 		// 1. Create a new Robot
 		Robot da = new Robot();
 		da.hide();
-		da.setPenWidth(3);
+		da.setPenWidth(5);
 		// 3. Put the robot's pen down
 		da.penDown();
 		// 8. Make the robot go at maximum speed (100)
