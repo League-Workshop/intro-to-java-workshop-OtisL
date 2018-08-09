@@ -52,7 +52,29 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 		System.out.println(robotYLocation);
 		// 7. If robot is at same location as the little girl
 		//      --make a pop-up tell the robot where to go next
-		
+		if (robotXLocation==720 && robotYLocation==410) {
+			JOptionPane.showMessageDialog(null, "Go ask the fat parrot for more help. That's all I know.");
+		}
+		if (robotXLocation==590 && robotYLocation==150) {
+			JOptionPane.showMessageDialog(null, "All I know is that the boy has some info. Maybe you should ask him.");
+		}
+		if (robotXLocation==210 && robotYLocation==390) {
+			JOptionPane.showMessageDialog(null, "I've got two different places you can go to.\n"
+					+ "You can go up to the treehouse window up there\n"
+					+ "Or you can go check out the bottle next to the water.");
+		}
+		if (robotXLocation==240 && robotYLocation==210) {
+			JOptionPane.showMessageDialog(null, "You found the extra!\n"
+					+ "MAKE SURE YOUR VOULME IS UP\n"
+					+ "*Skip to 0:10*\n"
+					+ "(you don't need to look at the screen)");
+			extraFound();
+		}
+		if (robotXLocation==420 && robotYLocation==510) {
+			JOptionPane.showMessageDialog(null, "You found the treasure! Try to find the extra!\n"
+					+ "*Make sure your volume is up*");
+			treasureFound(); 
+		}
 		// 8. Give the user subsequent clues at different locations on the image
 		// (pirate robot, swamp, parrots, etc.)
 		
@@ -65,7 +87,8 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
 		Robot.setWindowImage("section4/treasure_hunt.jpg");
 	
-		JOptionPane.showMessageDialog(null, "Ask the girl for help with your quest. Press the space bar to ask.");
+		JOptionPane.showMessageDialog(null, "Ask the girl for help with your quest. Press the space bar to ask.\n"
+				+ "*Don't hit two buttons at the same time, the program will break and you have to quit");
 
 	}
 
@@ -105,6 +128,14 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 	static void treasureFound() {
 		try {
 			URI uri = new URI("https://www.youtube.com/watch?v=G0aIg4N6aro");
+			java.awt.Desktop.getDesktop().browse(uri);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	static void extraFound() {
+		try {
+			URI uri = new URI("https://www.youtube.com/watch?v=8ENxcE0on5A");
 			java.awt.Desktop.getDesktop().browse(uri);
 		} catch (Exception e) {
 			e.printStackTrace();
